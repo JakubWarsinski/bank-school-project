@@ -1,0 +1,54 @@
+.profile {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 24px;
+}
+
+.profile-title {
+	font-size: 12pt;
+	font-weight: 600;
+}
+
+.profile-card,
+.profile-row {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.profile-card-header {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.profile-card-title {
+	font-size: 11pt;
+}
+
+.profile-divider {
+	width: 1px;
+	height: 16px;
+	background-color: #111827;
+}
+
+.profile-row {
+	display: flex;
+	flex-direction: column;
+}
+
+.profile-edit {
+	background: none;
+	border: none;
+	color: var(--color-primary);
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.profile-label {
+	font-size: 10pt;
+	color: var(--color-secondary);
+	word-break: break-word;
+}

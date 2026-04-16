@@ -1,0 +1,554 @@
+[
+	{
+		"city": "Warsaw"
+	},
+	{
+		"city": "Kraków"
+	},
+	{
+		"city": "Wrocław"
+	},
+	{
+		"city": "Łódź"
+	},
+	{
+		"city": "Poznań"
+	},
+	{
+		"city": "Gdańsk"
+	},
+	{
+		"city": "Szczecin"
+	},
+	{
+		"city": "Bydgoszcz"
+	},
+	{
+		"city": "Lublin"
+	},
+	{
+		"city": "Białystok"
+	},
+	{
+		"city": "Katowice"
+	},
+	{
+		"city": "Gdynia"
+	},
+	{
+		"city": "Zielona Góra"
+	},
+	{
+		"city": "Częstochowa"
+	},
+	{
+		"city": "Radom"
+	},
+	{
+		"city": "Toruń"
+	},
+	{
+		"city": "Rzeszów"
+	},
+	{
+		"city": "Sosnowiec"
+	},
+	{
+		"city": "Kielce"
+	},
+	{
+		"city": "Gliwice"
+	},
+	{
+		"city": "Olsztyn"
+	},
+	{
+		"city": "Bielsko-Biała"
+	},
+	{
+		"city": "Zabrze"
+	},
+	{
+		"city": "Bytom"
+	},
+	{
+		"city": "Ruda Śląska"
+	},
+	{
+		"city": "Rybnik"
+	},
+	{
+		"city": "Opole"
+	},
+	{
+		"city": "Tychy"
+	},
+	{
+		"city": "Gorzów Wielkopolski"
+	},
+	{
+		"city": "Dąbrowa Górnicza"
+	},
+	{
+		"city": "Elbląg"
+	},
+	{
+		"city": "Płock"
+	},
+	{
+		"city": "Tarnów"
+	},
+	{
+		"city": "Koszalin"
+	},
+	{
+		"city": "Włocławek"
+	},
+	{
+		"city": "Wałbrzych"
+	},
+	{
+		"city": "Chorzów"
+	},
+	{
+		"city": "Kalisz"
+	},
+	{
+		"city": "Legnica"
+	},
+	{
+		"city": "Nowy Sącz"
+	},
+	{
+		"city": "Mysłowice"
+	},
+	{
+		"city": "Ostrów Wielkopolski"
+	},
+	{
+		"city": "Lubin"
+	},
+	{
+		"city": "Inowrocław"
+	},
+	{
+		"city": "Stargard Szczeciński"
+	},
+	{
+		"city": "Gniezno"
+	},
+	{
+		"city": "Pruszków"
+	},
+	{
+		"city": "Ostrowiec Świętokrzyski"
+	},
+	{
+		"city": "Siemianowice Śląskie"
+	},
+	{
+		"city": "Głogów"
+	},
+	{
+		"city": "Pabianice"
+	},
+	{
+		"city": "Leszno"
+	},
+	{
+		"city": "Ełk"
+	},
+	{
+		"city": "Zamość"
+	},
+	{
+		"city": "Chełm"
+	},
+	{
+		"city": "Tomaszów Mazowiecki"
+	},
+	{
+		"city": "Mielec"
+	},
+	{
+		"city": "Tczew"
+	},
+	{
+		"city": "Będzin"
+	},
+	{
+		"city": "Zgierz"
+	},
+	{
+		"city": "Świdnica"
+	},
+	{
+		"city": "Bełchatów"
+	},
+	{
+		"city": "Legionowo"
+	},
+	{
+		"city": "Piekary Śląskie"
+	},
+	{
+		"city": "Rumia"
+	},
+	{
+		"city": "Ostrołęka"
+	},
+	{
+		"city": "Wejherowo"
+	},
+	{
+		"city": "Świętochłowice"
+	},
+	{
+		"city": "Starogard Gdański"
+	},
+	{
+		"city": "Starachowice"
+	},
+	{
+		"city": "Kołobrzeg"
+	},
+	{
+		"city": "Dębica"
+	},
+	{
+		"city": "Ząbki"
+	},
+	{
+		"city": "Marki"
+	},
+	{
+		"city": "Mińsk Mazowiecki"
+	},
+	{
+		"city": "Żyrardów"
+	},
+	{
+		"city": "Chojnice"
+	},
+	{
+		"city": "Świdnik"
+	},
+	{
+		"city": "Kwidzyn"
+	},
+	{
+		"city": "Malbork"
+	},
+	{
+		"city": "Bolesławiec"
+	},
+	{
+		"city": "Oświęcim"
+	},
+	{
+		"city": "Nowa Sól"
+	},
+	{
+		"city": "Knurów"
+	},
+	{
+		"city": "Wołomin"
+	},
+	{
+		"city": "Żary"
+	},
+	{
+		"city": "Oleśnica"
+	},
+	{
+		"city": "Czechowice-Dziedzice"
+	},
+	{
+		"city": "Lębork"
+	},
+	{
+		"city": "Brzeg"
+	},
+	{
+		"city": "Sochaczew"
+	},
+	{
+		"city": "Podgórze"
+	},
+	{
+		"city": "Cieszyn"
+	},
+	{
+		"city": "Oława"
+	},
+	{
+		"city": "Luboń"
+	},
+	{
+		"city": "Sopot"
+	},
+	{
+		"city": "Iława"
+	},
+	{
+		"city": "Kraśnik"
+	},
+	{
+		"city": "Dzierżoniów"
+	},
+	{
+		"city": "Pruszcz Gdański"
+	},
+	{
+		"city": "Czeladź"
+	},
+	{
+		"city": "Rury"
+	},
+	{
+		"city": "Zgorzelec"
+	},
+	{
+		"city": "Brodnica"
+	},
+	{
+		"city": "Giżycko"
+	},
+	{
+		"city": "Kobyłka"
+	},
+	{
+		"city": "Łowicz"
+	},
+	{
+		"city": "Gorlice"
+	},
+	{
+		"city": "Kętrzyn"
+	},
+	{
+		"city": "Halemba"
+	},
+	{
+		"city": "Wągrowiec"
+	},
+	{
+		"city": "Biłgoraj"
+	},
+	{
+		"city": "Turek"
+	},
+	{
+		"city": "Skawina"
+	},
+	{
+		"city": "Kościan"
+	},
+	{
+		"city": "Kościerzyna"
+	},
+	{
+		"city": "Piastów"
+	},
+	{
+		"city": "Szczytno"
+	},
+	{
+		"city": "Bartoszyce"
+	},
+	{
+		"city": "Płońsk"
+	},
+	{
+		"city": "Jawor"
+	},
+	{
+		"city": "Grajewo"
+	},
+	{
+		"city": "Zambrów"
+	},
+	{
+		"city": "Mrągowo"
+	},
+	{
+		"city": "Sulejówek"
+	},
+	{
+		"city": "Działdowo"
+	},
+	{
+		"city": "Lubartów"
+	},
+	{
+		"city": "Koło"
+	},
+	{
+		"city": "Lubań"
+	},
+	{
+		"city": "Chełmno"
+	},
+	{
+		"city": "Złotów"
+	},
+	{
+		"city": "Ozorków"
+	},
+	{
+		"city": "Tomaszów Lubelski"
+	},
+	{
+		"city": "Giszowiec"
+	},
+	{
+		"city": "Łomianki"
+	},
+	{
+		"city": "Chodzież"
+	},
+	{
+		"city": "Jasien"
+	},
+	{
+		"city": "Łańcut"
+	},
+	{
+		"city": "Bogucice"
+	},
+	{
+		"city": "Milanówek"
+	},
+	{
+		"city": "Braniewo"
+	},
+	{
+		"city": "Rawa Mazowiecka"
+	},
+	{
+		"city": "Radzionków Nowy"
+	},
+	{
+		"city": "Osowa"
+	},
+	{
+		"city": "Rypin"
+	},
+	{
+		"city": "Lidzbark Warmiński"
+	},
+	{
+		"city": "Złotoryja"
+	},
+	{
+		"city": "Ustka"
+	},
+	{
+		"city": "Biały Kamień"
+	},
+	{
+		"city": "Chełmża"
+	},
+	{
+		"city": "Lipno"
+	},
+	{
+		"city": "Łęczyca"
+	},
+	{
+		"city": "Zawodzie"
+	},
+	{
+		"city": "Słupca"
+	},
+	{
+		"city": "Człuchów"
+	},
+	{
+		"city": "Wąbrzeźno"
+	},
+	{
+		"city": "Sidlice"
+	},
+	{
+		"city": "Chojnów"
+	},
+	{
+		"city": "Chropaczów"
+	},
+	{
+		"city": "Koszutka"
+	},
+	{
+		"city": "Golub-Dobrzyń"
+	},
+	{
+		"city": "Aleksandrów Kujawski"
+	},
+	{
+		"city": "Puck"
+	},
+	{
+		"city": "Suchanino"
+	},
+	{
+		"city": "Czarnków"
+	},
+	{
+		"city": "Załęże"
+	},
+	{
+		"city": "Dąb"
+	},
+	{
+		"city": "Chruszczów"
+	},
+	{
+		"city": "Ksawerów"
+	},
+	{
+		"city": "Wola Rzędzińska"
+	},
+	{
+		"city": "Dąbrówka Mała"
+	},
+	{
+		"city": "Sejny"
+	},
+	{
+		"city": "Raciąż"
+	},
+	{
+		"city": "Górowo Iławeckie"
+	},
+	{
+		"city": "Zgłobice"
+	},
+	{
+		"city": "Libertów"
+	},
+	{
+		"city": "Zbylitowska Góra"
+	},
+	{
+		"city": "Wiśniowa Góra"
+	},
+	{
+		"city": "Koszyce"
+	},
+	{
+		"city": "Aleksandrowice"
+	},
+	{
+		"city": "Latoszyn"
+	},
+	{
+		"city": "Jodłówka"
+	},
+	{
+		"city": "Długa Szlachecka"
+	},
+	{
+		"city": "Kajkowo"
+	}
+]

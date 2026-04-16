@@ -1,0 +1,12 @@
+.profile-list {
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	max-width: 800px;
+	background-color: white;
+	border: 1px solid var(--color-white-hover);
+	border-radius: 2px;
+}

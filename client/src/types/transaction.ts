@@ -1,0 +1,45 @@
+export type TransactionType = 'INTERNAL_TRANSFER' | 'CARD_PAYMENT' | 'CARD_WITHDRAWAL' | 'ADJUSTMENT' | 'REVERSAL';
+
+export type StatusType = 'PENDING' | 'COMPLETED' | 'FAILED' | 'CANCELLED' | 'BLOCKED' | 'REFUNDED';
+
+export interface Transaction {
+	transaction_id: number;
+	code: string;
+	status: StatusType;
+	type: TransactionType;
+	sender_id: number;
+	receiver_id: number;
+	title: string;
+	description: string;
+	amount: number;
+	currency: string;
+	booking_date: Date | null;
+	created_at: Date;
+	updated_at: Date;
+}
+
+export interface GetTransactionDto {
+	cursor?: number;
+	limit?: number;
+	code?: string;
+	status?: StatusType;
+	type?: TransactionType;
+	amount?: number;
+	currency?: string;
+	booking_date?: Date | null;
+	created_at?: Date;
+	updated_at?: Date;
+}
+
+export interface GetTransactionResponse {
+	transactions: Transaction[];
+	cursor: number;
+}
+
+export interface PostTransactionDto {
+	type: TransactionType;
+	title: string;
+	description: string;
+	amount: number;
+	currency: string;
+}

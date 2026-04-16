@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'Aptos';
+	src: url('./assets/fonts/Aptos.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Aptos';
+	src: url('./assets/fonts/Aptos-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Aptos';
+	src: url('./assets/fonts/Aptos-Bold-Italic.ttf') format('truetype');
+	font-weight: 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Aptos';
+	src: url('./assets/fonts/Aptos-Italic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Aptos Display';
+	src: url('./assets/fonts/Aptos-Display.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Aptos Display';
+	src: url('./assets/fonts/Aptos-Display-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Aptos Display';
+	src: url('./assets/fonts/Aptos-Display-Bold-Italic.ttf') format('truetype');
+	font-weight: 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Aptos Display';
+	src: url('./assets/fonts/Aptos-Display-Italic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Aptos Mono';
+	src: url('./assets/fonts/Aptos-Mono.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Aptos Mono';
+	src: url('./assets/fonts/Aptos-Mono-Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Aptos Mono';
+	src: url('./assets/fonts/Aptos-Mono-Bold-Italic.ttf') format('truetype');
+	font-weight: 700;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Aptos Mono';
+	src: url('./assets/fonts/Aptos-Mono-Italic.ttf') format('truetype');
+	font-weight: 400;
+	font-style: italic;
+}
+
+:root {
+	font-family: 'Aptos', system-ui, sans-serif;
+
+	--color-primary: #3b82f6;
+	--color-primary-hover: #5dbeff;
+	--color-primary-light: #eff6ff;
+
+	--color-secondary: #6b7280;
+	--color-secondary-hover: #c3c9d6;
+
+	--color-success: #16a34a;
+	--color-success-hover: #15803d;
+
+	--color-warning: #f59e0b;
+	--color-warning-hover: #d97706;
+
+	--color-error: #dc2626;
+	--color-error-hover: #b91c1c;
+
+	--color-info: #0ea5e9;
+	--color-info-hover: #0284c7;
+
+	--color-white: #ffffff;
+	--color-white-hover: #dadada;
+
+	--color-black: #111827;
+	--color-gray: #9ca3af;
+}
+
+.dark {
+	--color-primary: #60a5fa;
+	--color-primary-hover: #93c5fd;
+	--color-primary-light: #1e3a8a;
+
+	--color-secondary: #9ca3af;
+	--color-secondary-hover: #d1d5db;
+
+	--color-success: #22c55e;
+	--color-success-hover: #16a34a;
+
+	--color-warning: #fbbf24;
+	--color-warning-hover: #f59e0b;
+
+	--color-error: #f87171;
+	--color-error-hover: #ef4444;
+
+	--color-info: #38bdf8;
+	--color-info-hover: #0ea5e9;
+
+	--color-white: #1f2937; /* zamiast białego -> ciemny szary */
+	--color-white-hover: #374151;
+
+	--color-black: #f9fafb; /* tekst odwrócony */
+	--color-gray: #6b7280;
+
+	/* 🎯 główne tła (ciemne szarości, nie czarne) */
+	--color-bg: #111827; /* slate-900 */
+	--color-bg-secondary: #1f2937; /* slate-800 */
+	--color-text: #f9fafb;
+}
+
+body {
+	font-family: 'Aptos', system-ui, sans-serif;
+}

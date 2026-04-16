@@ -1,0 +1,17 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 0.03em;
+	color: var(--color-black);
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	background: #f4f6f8;
+}

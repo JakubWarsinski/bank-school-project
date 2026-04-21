@@ -3,14 +3,14 @@ import * as argon2 from 'argon2';
 import { GetCardDto } from './dto/get.dto';
 import { PostCardDto } from './dto/post.dto';
 import { PatchCardDto } from './dto/patch.dto';
-import { PrismaService } from '@/prisma/prisma.service';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { AccountService } from '../accounts/account.service';
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { buildWhere } from '@/common/helpers/build_where.helper';
-import { handlePrismaError } from '@/common/exceptions/prisma.exception';
-import { CardUpdateInput, CardWhereInput, CardWhereUniqueInput } from '@db/generated/prisma/models';
-import { buildPage } from '@/common/helpers/build_page.helper';
+import { CardUpdateInput, CardWhereInput, CardWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { PrismaService } from '../../prisma/prisma.service';
+import { handlePrismaError } from '../../common/exceptions/prisma.exception';
+import { buildWhere } from '../../common/helpers/build_where.helper';
+import { buildPage } from '../../common/helpers/build_page.helper';
 
 @Injectable()
 export class CardService {

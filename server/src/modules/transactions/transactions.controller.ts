@@ -1,9 +1,9 @@
 import { GetTransactionDto } from './dto/get.dto';
 import { PostTransactionDto } from './dto/post.dto';
-import { Jwt } from '@/common/decorators/jwt.decorator';
 import { TransactionService } from './transactions.service';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Jwt } from '../../common/decorators/jwt.decorator';
 
 @Controller('transactions')
 export class TransactionController {

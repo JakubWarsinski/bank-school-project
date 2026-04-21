@@ -1,6 +1,6 @@
 ﻿import { Type } from 'class-transformer';
 import { IsEnum, IsNumber, Min } from 'class-validator';
-import { AccountRole } from '@db/generated/prisma/enums';
+import { AccountRole } from '../../../../prisma/generated/prisma/enums';
 
 export class AddAccountDto {
 	@Min(0, { message: 'ID użytkownika nie może być mniejsze niż 0.' })

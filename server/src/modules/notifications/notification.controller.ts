@@ -1,9 +1,9 @@
+import { Jwt } from '../../common/decorators/jwt.decorator';
+import { Roles } from '../../common/decorators/role.decorator';
+import { JwtData } from '../auth/strategies/access.strategy';
 import { GetNotificationDto } from './dto/get.dto';
 import { PostNotificationDto } from './dto/post.dto';
-import { Jwt } from '@/common/decorators/jwt.decorator';
-import { Roles } from '@/common/decorators/role.decorator';
 import { NotificationService } from './notification.service';
-import { JwtData } from '@modules/auth/strategies/access.strategy';
 import { Controller, Param, Get, Query, Post, Body, Delete } from '@nestjs/common';
 
 @Controller('notifications')

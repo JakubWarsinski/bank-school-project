@@ -1,5 +1,5 @@
 ﻿import { Type } from 'class-transformer';
-import { AccountStatus } from '@db/generated/prisma/enums';
+import { AccountStatus } from '../../../../prisma/generated/prisma/enums';
 import { IsString, Length, IsNumber, Min, IsDate, IsEnum } from 'class-validator';
 
 export class AccountDto {

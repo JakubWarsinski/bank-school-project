@@ -1,5 +1,5 @@
 ﻿import { Response } from 'express';
-import { envConfig } from '@/config/env.config';
+import { envConfig } from '../../../config/env.config';
 
 const name = envConfig.cookie.name;
 const maxAge = envConfig.jwt.refreshTime;

@@ -1,12 +1,12 @@
 ﻿import { GetCardDto } from './dto/get.dto';
 import { CardService } from './card.service';
 import { PostCardDto } from './dto/post.dto';
-import { Jwt } from '@/common/decorators/jwt.decorator';
-import { Roles } from '@/common/decorators/role.decorator';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { PatchCardDto, PatchCardDtoPolicy } from './dto/patch.dto';
-import { filterDtoByRole } from '@/common/helpers/filter_dto.helper';
 import { Body, Controller, Get, Param, Patch, Post, Query } from '@nestjs/common';
+import { Jwt } from '../../common/decorators/jwt.decorator';
+import { Roles } from '../../common/decorators/role.decorator';
+import { filterDtoByRole } from '../../common/helpers/filter_dto.helper';
 
 @Controller('cards')
 export class CardController {

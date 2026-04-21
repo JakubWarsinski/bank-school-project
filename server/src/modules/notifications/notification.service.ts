@@ -1,13 +1,13 @@
 import { GetNotificationDto } from './dto/get.dto';
 import { PostNotificationDto } from './dto/post.dto';
 import { UserService } from '../users/users.service';
-import { PrismaService } from '@/prisma/prisma.service';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { buildWhere } from '@/common/helpers/build_where.helper';
-import { handlePrismaError } from '@/common/exceptions/prisma.exception';
-import { NotificationWhereInput, NotificationWhereUniqueInput } from '@db/generated/prisma/models';
-import { buildPage } from '@/common/helpers/build_page.helper';
+import { PrismaService } from '../../prisma/prisma.service';
+import { NotificationWhereInput, NotificationWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { handlePrismaError } from '../../common/exceptions/prisma.exception';
+import { buildWhere } from '../../common/helpers/build_where.helper';
+import { buildPage } from '../../common/helpers/build_page.helper';
 
 @Injectable()
 export class NotificationService {

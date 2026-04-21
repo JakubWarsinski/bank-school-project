@@ -1,11 +1,11 @@
 import * as argon2 from 'argon2';
 import { JwtService } from '@nestjs/jwt';
 import { LoginAuthDto } from './dto/login.dto';
-import { envConfig } from '@/config/env.config';
 import { UserService } from '../users/users.service';
 import { JwtData } from './strategies/access.strategy';
 import { SessionService } from '../sessions/session.service';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { envConfig } from '../../config/env.config';
 
 @Injectable()
 export class AuthService {

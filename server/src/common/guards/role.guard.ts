@@ -6,7 +6,7 @@ import {
 	InternalServerErrorException,
 	ForbiddenException,
 } from '@nestjs/common';
-import { UserRole } from '@db/generated/prisma/enums';
+import { UserRole } from '../../../prisma/generated/prisma/enums';
 
 @Injectable()
 export class RolesGuard implements CanActivate {

@@ -2,12 +2,12 @@ import type { Response } from 'express';
 import { AuthService } from './auth.service';
 import { LoginAuthDto } from './dto/login.dto';
 import { JwtData } from './strategies/access.strategy';
-import { Jwt } from '@/common/decorators/jwt.decorator';
 import { RefreshAuthGuard } from './guards/refresh.guard';
 import { SessionService } from '../sessions/session.service';
-import { IsPublic } from '@/common/decorators/public.decorator';
 import { clearCookies, setCookies } from './cookies/global.cookie';
 import { Controller, Post, Body, Res, Get, UseGuards, HttpCode, Delete } from '@nestjs/common';
+import { IsPublic } from '../../common/decorators/public.decorator';
+import { Jwt } from '../../common/decorators/jwt.decorator';
 
 @Controller('auth')
 export class AuthController {

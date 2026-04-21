@@ -1,13 +1,13 @@
 import { GetUserDto } from './dto/get.dto';
 import { UserService } from './users.service';
-import { Jwt } from '@/common/decorators/jwt.decorator';
-import { Roles } from '@/common/decorators/role.decorator';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { PostUserDto, PostUserDtoPolicy } from './dto/post.dto';
 import { PatchUserDto, PatchUserDtoPolicy } from './dto/patch';
-import { filterDtoByRole } from '@/common/helpers/filter_dto.helper';
 import { Body, Controller, Get, Param, Query, Post, Patch } from '@nestjs/common';
-import { UserRole } from '@db/generated/prisma/enums';
+import { Jwt } from '../../common/decorators/jwt.decorator';
+import { Roles } from '../../common/decorators/role.decorator';
+import { filterDtoByRole } from '../../common/helpers/filter_dto.helper';
+import { UserRole } from '../../../prisma/generated/prisma/enums';
 
 @Controller('users')
 export class UserController {

@@ -3,14 +3,14 @@ import * as argon2 from 'argon2';
 import { GetUserDto } from './dto/get.dto';
 import { PatchUserDto } from './dto/patch';
 import { PostUserDto } from './dto/post.dto';
-import { UserRole } from '@db/generated/prisma/enums';
-import { PrismaService } from '@/prisma/prisma.service';
 import { JwtData } from '../auth/strategies/access.strategy';
-import { buildWhere } from '@/common/helpers/build_where.helper';
-import { handlePrismaError } from '@/common/exceptions/prisma.exception';
 import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
-import { UserUpdateInput, UserWhereInput, UserWhereUniqueInput } from '@db/generated/prisma/models';
-import { buildPage } from '@/common/helpers/build_page.helper';
+import { PrismaService } from '../../prisma/prisma.service';
+import { UserUpdateInput, UserWhereInput, UserWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { handlePrismaError } from '../../common/exceptions/prisma.exception';
+import { buildWhere } from '../../common/helpers/build_where.helper';
+import { buildPage } from '../../common/helpers/build_page.helper';
+import { UserRole } from '../../../prisma/generated/prisma/enums';
 
 @Injectable()
 export class UserService {

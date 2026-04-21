@@ -1,7 +1,7 @@
-﻿import { PostSessionDto } from './dto/post.dto';
-import { PrismaService } from '@/prisma/prisma.service';
+﻿import { handlePrismaError } from '../../common/exceptions/prisma.exception';
+import { PrismaService } from '../../prisma/prisma.service';
+import { PostSessionDto } from './dto/post.dto';
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { handlePrismaError } from '@/common/exceptions/prisma.exception';
 
 @Injectable()
 export class SessionService {

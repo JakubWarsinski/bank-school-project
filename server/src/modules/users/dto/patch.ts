@@ -1,4 +1,4 @@
-﻿import { UserRole } from '@db/generated/prisma/enums';
+﻿import { UserRole } from '../../../../prisma/generated/prisma/enums';
 import { UserDto } from './main.dto';
 import { OmitType, PartialType } from '@nestjs/mapped-types';
 

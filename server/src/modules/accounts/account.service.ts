@@ -4,13 +4,13 @@ import { AddAccountDto } from './dto/add.dto';
 import { PostAccountDto } from './dto/post.dto';
 import { PatchAccountDto } from './dto/patch.dto';
 import { UserService } from '../users/users.service';
-import { PrismaService } from '@/prisma/prisma.service';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { buildWhere } from '@/common/helpers/build_where.helper';
-import { handlePrismaError } from '@/common/exceptions/prisma.exception';
-import { AccountWhereInput, AccountWhereUniqueInput } from '@db/generated/prisma/models';
-import { buildPage } from '@/common/helpers/build_page.helper';
+import { PrismaService } from '../../prisma/prisma.service';
+import { AccountWhereInput, AccountWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { handlePrismaError } from '../../common/exceptions/prisma.exception';
+import { buildWhere } from '../../common/helpers/build_where.helper';
+import { buildPage } from '../../common/helpers/build_page.helper';
 
 @Injectable()
 export class AccountService {

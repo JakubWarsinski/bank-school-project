@@ -2,13 +2,12 @@
 import { AddAccountDto } from './dto/add.dto';
 import { PostAccountDto } from './dto/post.dto';
 import { AccountService } from './account.service';
-import { Jwt } from '@/common/decorators/jwt.decorator';
-import { Roles } from '@/common/decorators/role.decorator';
-import { JwtData } from '@modules/auth/strategies/access.strategy';
-import { filterDtoByRole } from '@/common/helpers/filter_dto.helper';
 import { Controller, Param, Patch, Get, Query, Post, Body } from '@nestjs/common';
 import { PatchAccountDto, PatchAccountDtoPolicy } from './dto/patch.dto';
-import { UserRole } from '@db/generated/prisma/enums';
+import { JwtData } from '../auth/strategies/access.strategy';
+import { Jwt } from '../../common/decorators/jwt.decorator';
+import { Roles } from '../../common/decorators/role.decorator';
+import { filterDtoByRole } from '../../common/helpers/filter_dto.helper';
 
 @Controller('accounts')
 export class AccountController {

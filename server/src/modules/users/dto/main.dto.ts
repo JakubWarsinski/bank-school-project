@@ -1,5 +1,4 @@
 ﻿import { Type } from 'class-transformer';
-import { UserRole } from '@db/generated/prisma/enums';
 import {
 	IsString,
 	IsEmail,
@@ -13,6 +12,7 @@ import {
 	IsNumber,
 	MaxLength,
 } from 'class-validator';
+import { UserRole } from '../../../../prisma/generated/prisma/enums';
 
 export class UserDto {
 	@Min(0, { message: 'ID użytkownika nie może być mniejsze niż 0.' })

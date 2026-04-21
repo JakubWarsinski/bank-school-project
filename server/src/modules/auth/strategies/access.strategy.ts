@@ -1,8 +1,8 @@
-﻿import { envConfig } from '@/config/env.config';
-import { PassportStrategy } from '@nestjs/passport';
+﻿import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { UserRole } from '@db/generated/prisma/enums';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { UserRole } from '../../../../prisma/generated/prisma/enums';
+import { envConfig } from '../../../config/env.config';
 
 export interface JwtData {
 	id: number;

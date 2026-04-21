@@ -6,8 +6,9 @@ import { Jwt } from '@/common/decorators/jwt.decorator';
 import { Roles } from '@/common/decorators/role.decorator';
 import { JwtData } from '@modules/auth/strategies/access.strategy';
 import { filterDtoByRole } from '@/common/helpers/filter_dto.helper';
-import { PatchAccountDto, PatchAccountRolesDto } from './dto/patch.dto';
 import { Controller, Param, Patch, Get, Query, Post, Body } from '@nestjs/common';
+import { PatchAccountDto, PatchAccountDtoPolicy } from './dto/patch.dto';
+import { UserRole } from '@db/generated/prisma/enums';
 
 @Controller('accounts')
 export class AccountController {
@@ -18,6 +19,7 @@ export class AccountController {
 		return await this.accountService.findUnique({ account_id: id }, user);
 	}
 
+	@Roles('ADMIN', 'EMPLOYEE')
 	@Get()
 	async findMany(@Query() dto: GetAccountDto, @Jwt() user: JwtData) {
 		return await this.accountService.findMany(dto, user);
@@ -37,7 +39,7 @@ export class AccountController {
 
 	@Patch(':id')
 	async patch(@Param('id') id: number, @Body() dto: PatchAccountDto, @Jwt() user: JwtData) {
-		const safeDto = filterDtoByRole(dto, PatchAccountRolesDto, user.role);
+		const safeDto = filterDtoByRole(dto, PatchAccountDtoPolicy[user.role]) as PatchAccountDto;
 
 		return await this.accountService.patch(id, safeDto, user);
 	}

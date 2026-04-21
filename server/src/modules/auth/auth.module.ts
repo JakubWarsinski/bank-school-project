@@ -9,10 +9,9 @@ import { JwtStrategy } from './strategies/access.strategy';
 import { RefreshStrategy } from './strategies/refresh.strategy';
 import { UserModule } from '../users/users.module';
 import { SessionModule } from '../sessions/session.module';
-import { ResetTokenModule } from '../reset_token/reset_token.module';
 
 @Module({
-	imports: [JwtModule.register({}), UserModule, SessionModule, ResetTokenModule],
+	imports: [JwtModule.register({}), UserModule, SessionModule],
 	providers: [
 		JwtService,
 		AuthService,

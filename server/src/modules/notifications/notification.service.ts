@@ -7,6 +7,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { buildWhere } from '@/common/helpers/build_where.helper';
 import { handlePrismaError } from '@/common/exceptions/prisma.exception';
 import { NotificationWhereInput, NotificationWhereUniqueInput } from '@db/generated/prisma/models';
+import { buildPage } from '@/common/helpers/build_page.helper';
 
 @Injectable()
 export class NotificationService {
@@ -52,17 +53,7 @@ export class NotificationService {
 				},
 			});
 
-			if (notifications.length > limit) {
-				return {
-					notifications: notifications.slice(0, limit),
-					cursor: notifications[limit].user_id,
-				};
-			}
-
-			return {
-				notifications: notifications,
-				cursor: null,
-			};
+			return buildPage(notifications, limit, 'notification_id');
 		} catch (error) {
 			handlePrismaError(error);
 		}

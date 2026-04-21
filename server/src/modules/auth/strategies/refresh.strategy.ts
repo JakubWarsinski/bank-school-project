@@ -5,10 +5,11 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtData } from './access.strategy';
 import { UserRole } from '@db/generated/prisma/enums';
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class RefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
-	constructor() {
+	constructor(private readonly authService: AuthService) {
 		super({
 			ignoreExpiration: false,
 			jwtFromRequest: ExtractJwt.fromExtractors([
@@ -20,7 +21,13 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
 		});
 	}
 
-	async validate(payload: any): Promise<JwtData> {
+	async validate(payload: any, req: Request): Promise<JwtData> {
+		const refreshToken = req?.cookies?.[envConfig.cookie.name];
+
+		if (!refreshToken) {
+			throw new UnauthorizedException('Brak refresh tokena.');
+		}
+
 		const requiredFields = ['id', 'role', 'first_name', 'last_name'];
 		const missing = requiredFields.filter((f) => payload[f] == null);
 
@@ -32,11 +39,6 @@ export class RefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {
 			throw new UnauthorizedException('Niepoprawna rola użytkownika.');
 		}
 
-		return {
-			id: payload.id,
-			role: payload.role,
-			first_name: payload.first_name,
-			last_name: payload.last_name,
-		};
+		return this.authService.verifyToken(payload, refreshToken);
 	}
 }

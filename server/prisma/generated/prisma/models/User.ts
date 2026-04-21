@@ -50,8 +50,8 @@ export type UserMinAggregateOutputType = {
   password_hash: string | null
   is_active: boolean | null
   id_card_number: string | null
-  id_card_issue: Date | null
-  id_card_expiry: Date | null
+  id_card_issue: string | null
+  id_card_expiry: string | null
   profession: string | null
   monthly_net_income: string | null
   main_income_sources: string | null
@@ -75,8 +75,8 @@ export type UserMaxAggregateOutputType = {
   password_hash: string | null
   is_active: boolean | null
   id_card_number: string | null
-  id_card_issue: Date | null
-  id_card_expiry: Date | null
+  id_card_issue: string | null
+  id_card_expiry: string | null
   profession: string | null
   monthly_net_income: string | null
   main_income_sources: string | null
@@ -294,11 +294,11 @@ export type UserGroupByOutputType = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash: string | null
   is_active: boolean
   id_card_number: string | null
-  id_card_issue: Date | null
-  id_card_expiry: Date | null
+  id_card_issue: string | null
+  id_card_expiry: string | null
   profession: string | null
   monthly_net_income: string | null
   main_income_sources: string | null
@@ -342,11 +342,11 @@ export type UserWhereInput = {
   street?: Prisma.StringFilter<"User"> | string
   city?: Prisma.StringFilter<"User"> | string
   postal_code?: Prisma.StringFilter<"User"> | string
-  password_hash?: Prisma.StringFilter<"User"> | string
+  password_hash?: Prisma.StringNullableFilter<"User"> | string | null
   is_active?: Prisma.BoolFilter<"User"> | boolean
   id_card_number?: Prisma.StringNullableFilter<"User"> | string | null
-  id_card_issue?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  id_card_expiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  id_card_issue?: Prisma.StringNullableFilter<"User"> | string | null
+  id_card_expiry?: Prisma.StringNullableFilter<"User"> | string | null
   profession?: Prisma.StringNullableFilter<"User"> | string | null
   monthly_net_income?: Prisma.StringNullableFilter<"User"> | string | null
   main_income_sources?: Prisma.StringNullableFilter<"User"> | string | null
@@ -370,7 +370,7 @@ export type UserOrderByWithRelationInput = {
   street?: Prisma.SortOrder
   city?: Prisma.SortOrder
   postal_code?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
+  password_hash?: Prisma.SortOrderInput | Prisma.SortOrder
   is_active?: Prisma.SortOrder
   id_card_number?: Prisma.SortOrderInput | Prisma.SortOrder
   id_card_issue?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -401,11 +401,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   street?: Prisma.StringFilter<"User"> | string
   city?: Prisma.StringFilter<"User"> | string
   postal_code?: Prisma.StringFilter<"User"> | string
-  password_hash?: Prisma.StringFilter<"User"> | string
+  password_hash?: Prisma.StringNullableFilter<"User"> | string | null
   is_active?: Prisma.BoolFilter<"User"> | boolean
   id_card_number?: Prisma.StringNullableFilter<"User"> | string | null
-  id_card_issue?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
-  id_card_expiry?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
+  id_card_issue?: Prisma.StringNullableFilter<"User"> | string | null
+  id_card_expiry?: Prisma.StringNullableFilter<"User"> | string | null
   profession?: Prisma.StringNullableFilter<"User"> | string | null
   monthly_net_income?: Prisma.StringNullableFilter<"User"> | string | null
   main_income_sources?: Prisma.StringNullableFilter<"User"> | string | null
@@ -429,7 +429,7 @@ export type UserOrderByWithAggregationInput = {
   street?: Prisma.SortOrder
   city?: Prisma.SortOrder
   postal_code?: Prisma.SortOrder
-  password_hash?: Prisma.SortOrder
+  password_hash?: Prisma.SortOrderInput | Prisma.SortOrder
   is_active?: Prisma.SortOrder
   id_card_number?: Prisma.SortOrderInput | Prisma.SortOrder
   id_card_issue?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -462,11 +462,11 @@ export type UserScalarWhereWithAggregatesInput = {
   street?: Prisma.StringWithAggregatesFilter<"User"> | string
   city?: Prisma.StringWithAggregatesFilter<"User"> | string
   postal_code?: Prisma.StringWithAggregatesFilter<"User"> | string
-  password_hash?: Prisma.StringWithAggregatesFilter<"User"> | string
+  password_hash?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   is_active?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   id_card_number?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  id_card_issue?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-  id_card_expiry?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+  id_card_issue?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  id_card_expiry?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   profession?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   monthly_net_income?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   main_income_sources?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -486,11 +486,11 @@ export type UserCreateInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -514,11 +514,11 @@ export type UserUncheckedCreateInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -541,11 +541,11 @@ export type UserUpdateInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -569,11 +569,11 @@ export type UserUncheckedUpdateInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -597,11 +597,11 @@ export type UserCreateManyInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -621,11 +621,11 @@ export type UserUpdateManyMutationInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -646,11 +646,11 @@ export type UserUncheckedUpdateManyInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -746,20 +746,32 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
-export type EnumUserRoleFieldUpdateOperationsInput = {
-  set?: $Enums.UserRole
+export type StringFieldUpdateOperationsInput = {
+  set?: string
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
+export type EnumUserRoleFieldUpdateOperationsInput = {
+  set?: $Enums.UserRole
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type UserCreateNestedOneWithoutSessionInput = {
@@ -816,11 +828,11 @@ export type UserCreateWithoutSessionInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -843,11 +855,11 @@ export type UserUncheckedCreateWithoutSessionInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -885,11 +897,11 @@ export type UserUpdateWithoutSessionInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -912,11 +924,11 @@ export type UserUncheckedUpdateWithoutSessionInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -938,11 +950,11 @@ export type UserCreateWithoutAccountsInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -965,11 +977,11 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -1007,11 +1019,11 @@ export type UserUpdateWithoutAccountsInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1034,11 +1046,11 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1060,11 +1072,11 @@ export type UserCreateWithoutNotificationsInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -1087,11 +1099,11 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   street: string
   city: string
   postal_code: string
-  password_hash: string
+  password_hash?: string | null
   is_active?: boolean
   id_card_number?: string | null
-  id_card_issue?: Date | string | null
-  id_card_expiry?: Date | string | null
+  id_card_issue?: string | null
+  id_card_expiry?: string | null
   profession?: string | null
   monthly_net_income?: string | null
   main_income_sources?: string | null
@@ -1129,11 +1141,11 @@ export type UserUpdateWithoutNotificationsInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1156,11 +1168,11 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   street?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postal_code?: Prisma.StringFieldUpdateOperationsInput | string
-  password_hash?: Prisma.StringFieldUpdateOperationsInput | string
+  password_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   is_active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   id_card_number?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  id_card_issue?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  id_card_expiry?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  id_card_issue?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  id_card_expiry?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   profession?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   monthly_net_income?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   main_income_sources?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1344,11 +1356,11 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     street: string
     city: string
     postal_code: string
-    password_hash: string
+    password_hash: string | null
     is_active: boolean
     id_card_number: string | null
-    id_card_issue: Date | null
-    id_card_expiry: Date | null
+    id_card_issue: string | null
+    id_card_expiry: string | null
     profession: string | null
     monthly_net_income: string | null
     main_income_sources: string | null
@@ -1795,8 +1807,8 @@ export interface UserFieldRefs {
   readonly password_hash: Prisma.FieldRef<"User", 'String'>
   readonly is_active: Prisma.FieldRef<"User", 'Boolean'>
   readonly id_card_number: Prisma.FieldRef<"User", 'String'>
-  readonly id_card_issue: Prisma.FieldRef<"User", 'DateTime'>
-  readonly id_card_expiry: Prisma.FieldRef<"User", 'DateTime'>
+  readonly id_card_issue: Prisma.FieldRef<"User", 'String'>
+  readonly id_card_expiry: Prisma.FieldRef<"User", 'String'>
   readonly profession: Prisma.FieldRef<"User", 'String'>
   readonly monthly_net_income: Prisma.FieldRef<"User", 'String'>
   readonly main_income_sources: Prisma.FieldRef<"User", 'String'>
@@ -2031,7 +2043,6 @@ export type UserCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * The data used to create many Users.
    */
   data: Prisma.UserCreateManyInput | Prisma.UserCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -2050,7 +2061,6 @@ export type UserCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions
    * The data used to create many Users.
    */
   data: Prisma.UserCreateManyInput | Prisma.UserCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**

@@ -9,6 +9,7 @@ import { buildWhere } from '@/common/helpers/build_where.helper';
 import { handlePrismaError } from '@/common/exceptions/prisma.exception';
 import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 import { TransactionWhereInput, TransactionWhereUniqueInput } from '@db/generated/prisma/models';
+import { buildPage } from '@/common/helpers/build_page.helper';
 
 @Injectable()
 export class TransactionService {
@@ -52,17 +53,7 @@ export class TransactionService {
 				orderBy: { transaction_id: 'asc' },
 			});
 
-			if (transactions.length > limit) {
-				return {
-					transactions: transactions.slice(0, limit),
-					cursor: transactions[limit].transaction_id,
-				};
-			}
-
-			return {
-				transactions: transactions,
-				cursor: null,
-			};
+			return buildPage(transactions, limit, 'transaction_id');
 		} catch (error) {
 			handlePrismaError(error);
 		}

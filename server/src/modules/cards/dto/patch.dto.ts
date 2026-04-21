@@ -1,4 +1,5 @@
-﻿import { CardDto } from './main.dto';
+﻿import { UserRole } from '@db/generated/prisma/enums';
+import { CardDto } from './main.dto';
 import { PartialType, PickType } from '@nestjs/mapped-types';
 
 export class PatchCardDto extends PartialType(
@@ -13,8 +14,8 @@ export class PatchCardDto extends PartialType(
 	] as const),
 ) {}
 
-export const PatchCardRolesDto = {
-	ADMIN: ['status', 'pin', 'payment_limit', 'withdraw_limit', 'blocked_at', 'blocked_reason'],
-	EMPLOYEE: ['status', 'pin', 'payment_limit', 'withdraw_limit', 'blocked_at', 'blocked_reason'],
-	CLIENT: ['name', 'pin', 'daily_withdraw_limit', 'daily_payment_limit'],
+export const PatchCardDtoPolicy: Record<UserRole, (keyof PatchCardDto)[]> = {
+	CLIENT: ['status', 'blocked_at', 'blocked_reason'],
+	ADMIN: ['name'],
+	EMPLOYEE: ['name'],
 };

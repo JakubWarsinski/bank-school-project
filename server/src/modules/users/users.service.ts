@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import * as argon2 from 'argon2';
 import { GetUserDto } from './dto/get.dto';
-import { PatchUserDto } from './dto/update';
+import { PatchUserDto } from './dto/patch';
 import { PostUserDto } from './dto/post.dto';
 import { UserRole } from '@db/generated/prisma/enums';
 import { PrismaService } from '@/prisma/prisma.service';
@@ -9,7 +9,8 @@ import { JwtData } from '../auth/strategies/access.strategy';
 import { buildWhere } from '@/common/helpers/build_where.helper';
 import { handlePrismaError } from '@/common/exceptions/prisma.exception';
 import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
-import { UserCreateInput, UserUpdateInput, UserWhereInput, UserWhereUniqueInput } from '@db/generated/prisma/models';
+import { UserUpdateInput, UserWhereInput, UserWhereUniqueInput } from '@db/generated/prisma/models';
+import { buildPage } from '@/common/helpers/build_page.helper';
 
 @Injectable()
 export class UserService {
@@ -23,9 +24,11 @@ export class UserService {
 
 			const user = await this.prisma.user.findUnique({
 				where,
-				omit: {
-					password_hash: true,
-				},
+				...(jwt !== null && {
+					omit: {
+						password_hash: true,
+					},
+				}),
 			});
 
 			if (!user) {
@@ -56,17 +59,7 @@ export class UserService {
 				},
 			});
 
-			if (users.length > limit) {
-				return {
-					users: users.slice(0, limit),
-					cursor: users[limit].user_id,
-				};
-			}
-
-			return {
-				users: users,
-				cursor: null,
-			};
+			return buildPage(users, limit, 'user_id');
 		} catch (error) {
 			handlePrismaError(error);
 		}
@@ -102,13 +95,9 @@ export class UserService {
 
 	async create(dto: PostUserDto) {
 		try {
-			const { password, ...userData } = dto;
-
-			const passwordHash = await this.checkPassword(password);
-
 			const code = await this.createUserCode();
 
-			const data: UserCreateInput = { code, password_hash: passwordHash, ...userData };
+			const data = { code, ...dto, is_active: false };
 
 			return await this.prisma.user.create({
 				data,
@@ -126,6 +115,10 @@ export class UserService {
 
 		if (!user) {
 			throw new ForbiddenException('Użytkownik nie istnieje, lub nie posiadasz do niego dostępu.');
+		}
+
+		if (!user.is_active || !user.password_hash) {
+			throw new ForbiddenException('Konto nie zostało jeszcze aktywowane.');
 		}
 
 		const isPasswordValid = await argon2.verify(user.password_hash, password);
@@ -174,7 +167,7 @@ export class UserService {
 		const count = await this.prisma.user.count();
 		const nextNumber = (count + 1).toString();
 
-		const fixedPart = `${year}${nextNumber}`;
+		const fixedPart = `USER${year}${nextNumber}`;
 
 		const remaining = Math.max(16 - fixedPart.length, 0);
 

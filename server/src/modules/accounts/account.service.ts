@@ -5,12 +5,12 @@ import { PostAccountDto } from './dto/post.dto';
 import { PatchAccountDto } from './dto/patch.dto';
 import { UserService } from '../users/users.service';
 import { PrismaService } from '@/prisma/prisma.service';
-import { AccountStatus } from '@db/generated/prisma/enums';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { buildWhere } from '@/common/helpers/build_where.helper';
 import { handlePrismaError } from '@/common/exceptions/prisma.exception';
 import { AccountWhereInput, AccountWhereUniqueInput } from '@db/generated/prisma/models';
+import { buildPage } from '@/common/helpers/build_page.helper';
 
 @Injectable()
 export class AccountService {
@@ -62,17 +62,7 @@ export class AccountService {
 				orderBy: { account_id: 'asc' },
 			});
 
-			if (accounts.length > limit) {
-				return {
-					accounts: accounts.slice(0, limit),
-					cursor: accounts[limit].account_id,
-				};
-			}
-
-			return {
-				accounts: accounts,
-				cursor: null,
-			};
+			return buildPage(accounts, limit, 'account_id');
 		} catch (error) {
 			handlePrismaError(error);
 		}

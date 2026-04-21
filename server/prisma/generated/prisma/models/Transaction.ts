@@ -682,7 +682,6 @@ export type TransactionCreateOrConnectWithoutSenderInput = {
 
 export type TransactionCreateManySenderInputEnvelope = {
   data: Prisma.TransactionCreateManySenderInput | Prisma.TransactionCreateManySenderInput[]
-  skipDuplicates?: boolean
 }
 
 export type TransactionCreateWithoutReceiverInput = {
@@ -721,7 +720,6 @@ export type TransactionCreateOrConnectWithoutReceiverInput = {
 
 export type TransactionCreateManyReceiverInputEnvelope = {
   data: Prisma.TransactionCreateManyReceiverInput | Prisma.TransactionCreateManyReceiverInput[]
-  skipDuplicates?: boolean
 }
 
 export type TransactionUpsertWithWhereUniqueWithoutSenderInput = {
@@ -1666,7 +1664,6 @@ export type TransactionCreateManyArgs<ExtArgs extends runtime.Types.Extensions.I
    * The data used to create many Transactions.
    */
   data: Prisma.TransactionCreateManyInput | Prisma.TransactionCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1685,7 +1682,6 @@ export type TransactionCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ext
    * The data used to create many Transactions.
    */
   data: Prisma.TransactionCreateManyInput | Prisma.TransactionCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

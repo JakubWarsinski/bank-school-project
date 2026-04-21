@@ -7,5 +7,5 @@ export class PostAccountDto extends PickType(AccountDto, ['currency'] as const) 
 	@Min(0, { message: 'ID użytkownika nie może być mniejsze niż 0.' })
 	@Type(() => Number)
 	@IsNumber({}, { message: 'ID użytkownika musi być liczbą.' })
-	readonly user_id: number;
+	readonly user_id!: number;
 }

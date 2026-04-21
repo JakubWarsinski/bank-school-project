@@ -1,62 +1,18 @@
-﻿import { UserDto } from './main.dto';
-import { PickType } from '@nestjs/mapped-types';
+﻿import { UserRole } from '@db/generated/prisma/enums';
+import { UserDto } from './main.dto';
+import { OmitType } from '@nestjs/mapped-types';
 
-export class PostUserDto extends PickType(UserDto, [
-	'role',
-	'first_name',
-	'last_name',
-	'date_of_birth',
-	'pesel',
-	'email',
-	'phone_number',
-	'street',
-	'city',
-	'postal_code',
+export class PostUserDto extends OmitType(UserDto, [
+	'user_id',
+	'code',
 	'password',
-	'id_card_number',
-	'id_card_issue',
-	'id_card_expiry',
-	'profession',
-	'monthly_net_income',
-	'main_income_sources',
+	'is_active',
+	'updated_at',
+	'created_at',
 ] as const) {}
 
-export const PostUserRolesDto = {
-	ADMIN: [
-		'role',
-		'first_name',
-		'last_name',
-		'date_of_birth',
-		'pesel',
-		'email',
-		'phone_number',
-		'street',
-		'city',
-		'postal_code',
-		'password',
-		'id_card_number',
-		'id_card_issue',
-		'id_card_expiry',
-		'profession',
-		'monthly_net_income',
-		'main_income_sources',
-	] as const,
-	EMPLOYEE: [
-		'first_name',
-		'last_name',
-		'date_of_birth',
-		'pesel',
-		'email',
-		'phone_number',
-		'street',
-		'city',
-		'postal_code',
-		'password',
-		'id_card_number',
-		'id_card_issue',
-		'id_card_expiry',
-		'profession',
-		'monthly_net_income',
-		'main_income_sources',
-	] as const,
-} as const;
+export const PostUserDtoPolicy: Record<UserRole, (keyof PostUserDto)[]> = {
+	CLIENT: [],
+	ADMIN: [],
+	EMPLOYEE: ['role'],
+};

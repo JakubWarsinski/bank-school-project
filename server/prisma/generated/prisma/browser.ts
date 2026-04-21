@@ -18,11 +18,6 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model ResetToken
- * 
- */
-export type ResetToken = Prisma.ResetTokenModel
-/**
  * Model User
  * 
  */

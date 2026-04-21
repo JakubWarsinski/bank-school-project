@@ -3,10 +3,11 @@ import { UserService } from './users.service';
 import { Jwt } from '@/common/decorators/jwt.decorator';
 import { Roles } from '@/common/decorators/role.decorator';
 import { JwtData } from '../auth/strategies/access.strategy';
-import { PostUserDto, PostUserRolesDto } from './dto/post.dto';
-import { PatchUserDto, PatchUserRolesDto } from './dto/update';
+import { PostUserDto, PostUserDtoPolicy } from './dto/post.dto';
+import { PatchUserDto, PatchUserDtoPolicy } from './dto/patch';
 import { filterDtoByRole } from '@/common/helpers/filter_dto.helper';
 import { Body, Controller, Get, Param, Query, Post, Patch } from '@nestjs/common';
+import { UserRole } from '@db/generated/prisma/enums';
 
 @Controller('users')
 export class UserController {
@@ -25,15 +26,15 @@ export class UserController {
 
 	@Roles('ADMIN', 'EMPLOYEE')
 	@Post()
-	async create(@Body() dto: PostUserDto, @Jwt('role') role: string) {
-		const safeDto = filterDtoByRole(dto, PostUserRolesDto, role);
+	async create(@Body() dto: PostUserDto, @Jwt('role') role: UserRole) {
+		const safeDto = filterDtoByRole(dto, PostUserDtoPolicy[role]) as PostUserDto;
 
 		return await this.userService.create(safeDto);
 	}
 
 	@Patch(':id')
 	async update(@Param('id') id: number, @Body() dto: PatchUserDto, @Jwt() user: JwtData) {
-		const safeDto = filterDtoByRole(dto, PatchUserRolesDto, user.role);
+		const safeDto = filterDtoByRole(dto, PatchUserDtoPolicy[user.role]) as PatchUserDto;
 
 		return await this.userService.patch(id, safeDto, user);
 	}

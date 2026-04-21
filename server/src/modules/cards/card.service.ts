@@ -10,6 +10,7 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { buildWhere } from '@/common/helpers/build_where.helper';
 import { handlePrismaError } from '@/common/exceptions/prisma.exception';
 import { CardUpdateInput, CardWhereInput, CardWhereUniqueInput } from '@db/generated/prisma/models';
+import { buildPage } from '@/common/helpers/build_page.helper';
 
 @Injectable()
 export class CardService {
@@ -77,17 +78,7 @@ export class CardService {
 				},
 			});
 
-			if (cards.length > limit) {
-				return {
-					cards: cards.slice(0, limit),
-					cursor: cards[limit].card_id,
-				};
-			}
-
-			return {
-				cards: cards,
-				cursor: null,
-			};
+			return buildPage(cards, limit, 'card_id');
 		} catch (error) {
 			handlePrismaError(error);
 		}

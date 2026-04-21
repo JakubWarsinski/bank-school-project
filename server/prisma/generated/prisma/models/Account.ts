@@ -591,6 +591,10 @@ export type DecimalFieldUpdateOperationsInput = {
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type AccountCreateNestedOneWithoutUsersInput = {
   create?: Prisma.XOR<Prisma.AccountCreateWithoutUsersInput, Prisma.AccountUncheckedCreateWithoutUsersInput>
   connectOrCreate?: Prisma.AccountCreateOrConnectWithoutUsersInput
@@ -1836,7 +1840,6 @@ export type AccountCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
    * The data used to create many Accounts.
    */
   data: Prisma.AccountCreateManyInput | Prisma.AccountCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1855,7 +1858,6 @@ export type AccountCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensi
    * The data used to create many Accounts.
    */
   data: Prisma.AccountCreateManyInput | Prisma.AccountCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**

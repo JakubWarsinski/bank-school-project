@@ -1,5 +1,5 @@
 import { StatusType, TransactionType } from '../generated/prisma/enums';
-import { generateRandomDigits, generateRandomInt, pickRandom } from './random_generator.helper';
+import { generateRandomDate, generateRandomDigits, generateRandomInt, pickRandom } from './random_generator.helper';
 import { statusTypes, transactionDescriptions, transactionTitles, transactionTypes } from '../data/transaction.data';
 
 export const generateTransaction = (
@@ -21,5 +21,7 @@ export const generateTransaction = (
 		booking_date: !booking_date ? new Date() : booking_date,
 		amount: !amount ? generateRandomInt(1000, 5000) : amount,
 		currency: 'PLN',
+		created_at: generateRandomDate(new Date(2015, 0, 1), new Date(2023, 11, 31)),
+		updated_at: generateRandomDate(new Date(2015, 0, 1), new Date(2023, 11, 31)),
 	};
 };

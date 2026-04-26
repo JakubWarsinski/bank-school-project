@@ -49,11 +49,9 @@ export const Header = () => {
 
 	return (
 		<header className='relative w-full flex items-center justify-between px-4 md:px-8 py-3 shadow-md bg-white text-black dark:bg-gray-900 dark:text-white'>
-			{/* LOGO */}
 			<LogoIcon size={45} />
 
-			{/* NAV (desktop) */}
-			<nav className='hidden md:flex gap-6 text-sm font-medium'>
+			<nav className='hidden md:flex gap-6 text-sm font-medium '>
 				{Object.entries(navLinks).map(([label, path]) => (
 					<a key={label} href={path} className='hover:text-blue-500 transition'>
 						{label}
@@ -61,9 +59,7 @@ export const Header = () => {
 				))}
 			</nav>
 
-			{/* ACTIONS */}
 			<div className='flex items-center gap-3'>
-				{/* MOBILE MENU BUTTON */}
 				<button className='md:hidden p-2 rounded-lg hover:bg-gray-100' onClick={() => setOpen(!open)}>
 					<BarsIcon size={20} />
 				</button>
@@ -75,10 +71,9 @@ export const Header = () => {
 					{dark ? <SunIcon size={20} /> : <MoonIcon size={20} />}
 				</button>
 
-				{/* NOTIFICATIONS */}
 				<div className='relative'>
 					<button className='p-2 rounded-lg hover:bg-gray-100'>
-						<BellEmptyIcon size={20} />
+						<BellEmptyIcon size={20} className='dark:text-white' />
 					</button>
 
 					<span className='absolute -top-1 -right-1 text-xs bg-red-500 text-white px-1.5 rounded-full'>

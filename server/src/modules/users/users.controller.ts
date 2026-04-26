@@ -8,6 +8,7 @@ import { Jwt } from '../../common/decorators/jwt.decorator';
 import { Roles } from '../../common/decorators/role.decorator';
 import { filterDtoByRole } from '../../common/helpers/filter_dto.helper';
 import { UserRole } from '../../../prisma/generated/prisma/enums';
+import { PolicyBody } from '../../common/decorators/policy.decorator';
 
 @Controller('users')
 export class UserController {
@@ -26,10 +27,11 @@ export class UserController {
 
 	@Roles('ADMIN', 'EMPLOYEE')
 	@Post()
-	async create(@Body() dto: PostUserDto, @Jwt('role') role: UserRole) {
-		const safeDto = filterDtoByRole(dto, PostUserDtoPolicy[role]) as PostUserDto;
-
-		return await this.userService.create(safeDto);
+	async create(
+		@PolicyBody(PostUserDtoPolicy)
+		dto: PostUserDto,
+	) {
+		return await this.userService.create(dto);
 	}
 
 	@Patch(':id')

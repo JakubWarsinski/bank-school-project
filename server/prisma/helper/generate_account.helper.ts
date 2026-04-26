@@ -1,6 +1,6 @@
 import { CountryCode, IBAN } from 'ibankit';
 import { AccountStatus } from '../generated/prisma/enums';
-import { generateRandomInt } from './random_generator.helper';
+import { generateRandomDate, generateRandomInt } from './random_generator.helper';
 
 export const generateAccount = (
 	status?: AccountStatus,
@@ -22,5 +22,7 @@ export const generateAccount = (
 		daily_transfer_limit: !daily_transfer_limit ? generateRandomInt(balance, 50000) : daily_transfer_limit,
 		closed_at,
 		closed_reason,
+		created_at: generateRandomDate(new Date(2015, 0, 1), new Date(2023, 11, 31)),
+		updated_at: generateRandomDate(new Date(2015, 0, 1), new Date(2023, 11, 31)),
 	};
 };

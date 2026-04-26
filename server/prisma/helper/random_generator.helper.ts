@@ -10,13 +10,17 @@ export const generateRandomDigits = (length: number): string => {
 		.join('');
 };
 
-export const generateRandomDate = (start: Date, end: Date): string => {
+export const generateRandomDate = (start: Date, end: Date): Date => {
 	const startTime = start.getTime();
 	const endTime = end.getTime();
 
 	const randomTime = startTime + Math.random() * (endTime - startTime);
 
-	const date = new Date(randomTime);
+	return new Date(randomTime);
+};
+
+export const generateRandomDateString = (start: Date, end: Date): string => {
+	const date = generateRandomDate(start, end);
 
 	return date.toISOString().split('T')[0];
 };

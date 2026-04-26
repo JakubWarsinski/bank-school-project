@@ -1,6 +1,6 @@
 import * as argon2 from 'argon2';
 import { CardStatus } from '../generated/prisma/enums';
-import { generateRandomDigits, generateRandomInt } from './random_generator.helper';
+import { generateRandomDate, generateRandomDigits, generateRandomInt } from './random_generator.helper';
 
 export const generateCard = async (
 	account_id: number,
@@ -47,5 +47,7 @@ export const generateCard = async (
 		daily_withdraw_limit: !daily_withdraw_limit ? generateRandomInt(500, withdraw) : daily_withdraw_limit,
 		blocked_at,
 		blocked_reason,
+		created_at: generateRandomDate(new Date(2015, 0, 1), new Date(2023, 11, 31)),
+		updated_at: generateRandomDate(new Date(2015, 0, 1), new Date(2023, 11, 31)),
 	};
 };

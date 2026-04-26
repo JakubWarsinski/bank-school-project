@@ -31,7 +31,7 @@ api.interceptors.response.use(
 		request._retry = true;
 
 		try {
-			const { data } = await axios.get(`${API_URL}/auth/refresh`, {
+			const { data } = await axios.get(`${API_URL}/auth`, {
 				withCredentials: true,
 			});
 

@@ -1,5 +1,4 @@
-﻿import { UserRole } from '../../../../prisma/generated/prisma/enums';
-import { UserDto } from './main.dto';
+﻿import { UserDto } from './main.dto';
 import { OmitType } from '@nestjs/mapped-types';
 
 export class PostUserDto extends OmitType(UserDto, [
@@ -11,8 +10,11 @@ export class PostUserDto extends OmitType(UserDto, [
 	'created_at',
 ] as const) {}
 
-export const PostUserDtoPolicy: Record<UserRole, (keyof PostUserDto)[]> = {
-	CLIENT: [],
-	ADMIN: [],
-	EMPLOYEE: ['role'],
+class AdminDto extends PostUserDto {}
+
+class EmployeeDto extends OmitType(PostUserDto, ['role'] as const) {}
+
+export const PostUserDtoPolicy = {
+	ADMIN: AdminDto,
+	EMPLOYEE: EmployeeDto,
 };

@@ -4,7 +4,7 @@ import { GetTransactionDto, GetTransactionResponse, PostTransactionDto, Transact
 
 const BASE_URL = '/transactions';
 
-export const cardApi = {
+export const transactionApi = {
 	getUnique: async (id: number): Promise<Transaction> => {
 		try {
 			const { data } = await api.get(`${BASE_URL}/${id}`);

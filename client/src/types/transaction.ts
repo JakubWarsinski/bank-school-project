@@ -29,10 +29,12 @@ export interface GetTransactionDto {
 	booking_date?: Date | null;
 	created_at?: Date;
 	updated_at?: Date;
+	created_at_gte?: Date;
+	created_at_lte?: Date;
 }
 
 export interface GetTransactionResponse {
-	transactions: Transaction[];
+	items: Transaction[];
 	cursor: number;
 }
 

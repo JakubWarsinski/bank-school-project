@@ -4,7 +4,7 @@ import { UserService } from '../users/users.service';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { NotificationWhereInput, NotificationWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { Prisma } from '@prisma/client';
 import { handlePrismaError } from '../../common/exceptions/prisma.exception';
 import { buildWhere } from '../../common/helpers/build_where.helper';
 import { buildPage } from '../../common/helpers/build_page.helper';
@@ -16,7 +16,7 @@ export class NotificationService {
 		private readonly userService: UserService,
 	) {}
 
-	async findUnique(where: NotificationWhereUniqueInput, jwt?: JwtData) {
+	async findUnique(where: Prisma.NotificationWhereUniqueInput, jwt?: JwtData) {
 		try {
 			if (jwt && jwt.role == 'CLIENT') {
 				where.user_id = jwt.id;
@@ -38,7 +38,7 @@ export class NotificationService {
 		try {
 			const { cursor, limit, ...filters } = dto;
 
-			const where: NotificationWhereInput = buildWhere(filters, ['type']);
+			const where: Prisma.NotificationWhereInput = buildWhere(filters, ['type']);
 
 			if (jwt && jwt.role == 'CLIENT') {
 				where.user_id = jwt.id;
@@ -71,7 +71,7 @@ export class NotificationService {
 
 	async delete(id: number, jwt?: JwtData) {
 		try {
-			const where: NotificationWhereUniqueInput = { notification_id: id };
+			const where: Prisma.NotificationWhereUniqueInput = { notification_id: id };
 
 			if (jwt && jwt.role == 'CLIENT') {
 				where.user_id = jwt.id;

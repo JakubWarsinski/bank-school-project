@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
-import { UserRole } from '../../../prisma/generated/prisma/enums';
+import { UserRole } from '@prisma/client';
 
 type RolePolicy = Record<string, Type<any>>;
 type StateSource = 'body' | 'query';

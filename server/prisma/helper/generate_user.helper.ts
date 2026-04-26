@@ -1,5 +1,5 @@
 import * as argon2 from 'argon2';
-import { UserRole } from '../generated/prisma/enums';
+import { UserRole } from '@/prisma/client';
 import {
 	generateRandomDate,
 	generateRandomDateString,

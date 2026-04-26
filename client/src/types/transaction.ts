@@ -22,8 +22,11 @@ export interface GetTransactionDto {
 	cursor?: number;
 	limit?: number;
 	code?: string;
+	title?: string;
 	status?: StatusType;
 	type?: TransactionType;
+	amount_gte?: number;
+	amount_lte?: number;
 	amount?: number;
 	currency?: string;
 	booking_date?: Date | null;

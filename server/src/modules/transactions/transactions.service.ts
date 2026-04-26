@@ -6,7 +6,7 @@ import { AccountService } from '../accounts/account.service';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { TransactionWhereInput, TransactionWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { Prisma } from '@prisma/client';
 import { handlePrismaError } from '../../common/exceptions/prisma.exception';
 import { buildWhere } from '../../common/helpers/build_where.helper';
 import { buildPage } from '../../common/helpers/build_page.helper';
@@ -18,7 +18,7 @@ export class TransactionService {
 		private readonly accountService: AccountService,
 	) {}
 
-	async findUnique(where: TransactionWhereUniqueInput, jwt?: JwtData) {
+	async findUnique(where: Prisma.TransactionWhereUniqueInput, jwt?: JwtData) {
 		try {
 			if (jwt && jwt.role === 'CLIENT') {
 				where.OR = this.canAccess(jwt);
@@ -40,7 +40,7 @@ export class TransactionService {
 		try {
 			const { cursor, limit, ...filters } = dto;
 
-			const where: TransactionWhereInput = buildWhere(filters, ['status', 'transaction_code']);
+			const where: Prisma.TransactionWhereInput = buildWhere(filters, ['status', 'transaction_code']);
 
 			if (jwt && jwt.role === 'CLIENT') {
 				where.OR = this.canAccess(jwt);

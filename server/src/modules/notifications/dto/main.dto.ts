@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsString, IsDate, Length, IsEnum, Min, IsNumber, MinLength } from 'class-validator';
-import { NotificationType } from '../../../../prisma/generated/prisma/enums';
+import { NotificationType } from '@prisma/client';
 
 export class NotificationDto {
 	@Min(0, { message: 'ID Powiadomienia nie może być mniejsze niż 0.' })

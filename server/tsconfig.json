@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-		"module": "Node16",
-		"target": "ES2023",
+		"module": "NodeNext",
+		"target": "es2025",
 		"outDir": "./dist",
 		"sourceMap": true,
 		"strict": true,

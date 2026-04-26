@@ -12,7 +12,7 @@ import {
 	IsNumber,
 	MaxLength,
 } from 'class-validator';
-import { UserRole } from '../../../../prisma/generated/prisma/enums';
+import { UserRole } from '@prisma/client';
 
 export class UserDto {
 	@Min(0, { message: 'ID użytkownika nie może być mniejsze niż 0.' })

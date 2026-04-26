@@ -6,7 +6,7 @@ import { PatchCardDto } from './dto/patch.dto';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { AccountService } from '../accounts/account.service';
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { CardUpdateInput, CardWhereInput, CardWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from '../../prisma/prisma.service';
 import { handlePrismaError } from '../../common/exceptions/prisma.exception';
 import { buildWhere } from '../../common/helpers/build_where.helper';
@@ -19,7 +19,7 @@ export class CardService {
 		private readonly accountService: AccountService,
 	) {}
 
-	async findUnique(where: CardWhereUniqueInput, jwt?: JwtData) {
+	async findUnique(where: Prisma.CardWhereUniqueInput, jwt?: JwtData) {
 		try {
 			if (jwt && jwt.role === 'CLIENT') {
 				where.account = {
@@ -54,7 +54,7 @@ export class CardService {
 		try {
 			const { cursor, limit, ...filters } = dto;
 
-			const where: CardWhereInput = buildWhere(filters, ['status']);
+			const where: Prisma.CardWhereInput = buildWhere(filters, ['status']);
 
 			if (jwt && jwt.role === 'CLIENT') {
 				where.account = {
@@ -86,7 +86,7 @@ export class CardService {
 
 	async patch(id: number, dto: PatchCardDto, jwt?: JwtData) {
 		try {
-			const where: CardWhereUniqueInput = { card_id: id };
+			const where: Prisma.CardWhereUniqueInput = { card_id: id };
 
 			if (jwt && jwt.role === 'CLIENT') {
 				where.account = {
@@ -100,7 +100,7 @@ export class CardService {
 
 			const { pin, ...cardData } = dto;
 
-			const data: CardUpdateInput = cardData;
+			const data: Prisma.CardUpdateInput = cardData;
 
 			if (pin) {
 				data.pin_hash = await argon2.hash(pin);

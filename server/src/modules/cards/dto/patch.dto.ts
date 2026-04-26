@@ -1,4 +1,4 @@
-﻿import { UserRole } from '../../../../prisma/generated/prisma/enums';
+﻿import { UserRole } from '@prisma/client';
 import { CardDto } from './main.dto';
 import { PartialType, PickType } from '@nestjs/mapped-types';
 

@@ -1,11 +1,4 @@
 -- CreateTable
-CREATE TABLE "reset_token" (
-    "user_id" INTEGER NOT NULL,
-    "token_hash" TEXT NOT NULL,
-    "expire_at" DATETIME NOT NULL
-);
-
--- CreateTable
 CREATE TABLE "users" (
     "user_id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "code" TEXT NOT NULL,
@@ -19,11 +12,11 @@ CREATE TABLE "users" (
     "street" TEXT NOT NULL,
     "city" TEXT NOT NULL,
     "postal_code" TEXT NOT NULL,
-    "password_hash" TEXT NOT NULL,
+    "password_hash" TEXT,
     "is_active" BOOLEAN NOT NULL DEFAULT true,
     "id_card_number" TEXT,
-    "id_card_issue" DATETIME,
-    "id_card_expiry" DATETIME,
+    "id_card_issue" TEXT,
+    "id_card_expiry" TEXT,
     "profession" TEXT,
     "monthly_net_income" TEXT,
     "main_income_sources" TEXT,
@@ -35,12 +28,7 @@ CREATE TABLE "users" (
 CREATE TABLE "sessions" (
     "user_id" INTEGER NOT NULL,
     "token_hash" TEXT NOT NULL,
-    "ip_address" TEXT,
-    "user_agent" TEXT NOT NULL,
-    "device" TEXT,
-    "expires_at" DATETIME NOT NULL,
-    "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" DATETIME NOT NULL,
+    "expire_at" DATETIME NOT NULL,
     CONSTRAINT "sessions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -123,9 +111,6 @@ CREATE TABLE "notifications" (
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT "notifications_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "reset_token_user_id_key" ON "reset_token"("user_id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "kod klienta" ON "users"("code");

@@ -6,17 +6,17 @@ import { PostUserDto } from './dto/post.dto';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { UserUpdateInput, UserWhereInput, UserWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { Prisma } from '@prisma/client';
 import { handlePrismaError } from '../../common/exceptions/prisma.exception';
 import { buildWhere } from '../../common/helpers/build_where.helper';
 import { buildPage } from '../../common/helpers/build_page.helper';
-import { UserRole } from '../../../prisma/generated/prisma/enums';
+import { UserRole } from '@prisma/client';
 
 @Injectable()
 export class UserService {
 	constructor(private readonly prisma: PrismaService) {}
 
-	async findUnique(where: UserWhereUniqueInput, jwt?: JwtData) {
+	async findUnique(where: Prisma.UserWhereUniqueInput, jwt?: JwtData) {
 		try {
 			if (jwt && where.user_id) {
 				this.canAccess(jwt.role, jwt.id, where.user_id);
@@ -45,7 +45,7 @@ export class UserService {
 		try {
 			const { cursor, limit, ...filters } = dto;
 
-			const where: UserWhereInput = buildWhere(filters, ['role']);
+			const where: Prisma.UserWhereInput = buildWhere(filters, ['role']);
 
 			const users = await this.prisma.user.findMany({
 				where,
@@ -73,7 +73,7 @@ export class UserService {
 
 			const { password, ...userData } = dto;
 
-			const data: UserUpdateInput = userData;
+			const data: Prisma.UserUpdateInput = userData;
 
 			if (password) {
 				data.password_hash = await this.checkPassword(password);
@@ -110,7 +110,7 @@ export class UserService {
 		}
 	}
 
-	async verifyPassword(where: UserWhereUniqueInput, password: string) {
+	async verifyPassword(where: Prisma.UserWhereUniqueInput, password: string) {
 		const user = await this.prisma.user.findUnique({ where });
 
 		if (!user) {

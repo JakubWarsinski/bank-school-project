@@ -1,6 +1,6 @@
 import { Type } from 'class-transformer';
 import { IsString, Length, IsEnum, IsDate, IsNumber, Min } from 'class-validator';
-import { StatusType, TransactionType } from '../../../../prisma/generated/prisma/enums';
+import { StatusType, TransactionType } from '@prisma/client';
 
 export class TransactionDto {
 	@Min(0, { message: 'ID transakcji nie może być mniejsze niż 0.' })

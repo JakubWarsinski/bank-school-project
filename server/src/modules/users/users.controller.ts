@@ -7,7 +7,6 @@ import { Body, Controller, Get, Param, Query, Post, Patch } from '@nestjs/common
 import { Jwt } from '../../common/decorators/jwt.decorator';
 import { Roles } from '../../common/decorators/role.decorator';
 import { filterDtoByRole } from '../../common/helpers/filter_dto.helper';
-import { UserRole } from '../../../prisma/generated/prisma/enums';
 import { PolicyBody } from '../../common/decorators/policy.decorator';
 
 @Controller('users')

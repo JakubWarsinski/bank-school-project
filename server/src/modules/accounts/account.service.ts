@@ -7,7 +7,7 @@ import { UserService } from '../users/users.service';
 import { JwtData } from '../auth/strategies/access.strategy';
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service';
-import { AccountWhereInput, AccountWhereUniqueInput } from '../../../prisma/generated/prisma/models';
+import { Prisma } from '@prisma/client';
 import { handlePrismaError } from '../../common/exceptions/prisma.exception';
 import { buildWhere } from '../../common/helpers/build_where.helper';
 import { buildPage } from '../../common/helpers/build_page.helper';
@@ -19,7 +19,7 @@ export class AccountService {
 		private readonly userService: UserService,
 	) {}
 
-	async findUnique(where: AccountWhereUniqueInput, jwt?: JwtData) {
+	async findUnique(where: Prisma.AccountWhereUniqueInput, jwt?: JwtData) {
 		try {
 			if (jwt && jwt.role === 'CLIENT') {
 				where.users = {
@@ -47,7 +47,7 @@ export class AccountService {
 		try {
 			const { cursor, limit, ...filters } = dto;
 
-			const where: AccountWhereInput = buildWhere(filters, ['status', 'iban']);
+			const where: Prisma.AccountWhereInput = buildWhere(filters, ['status', 'iban']);
 
 			if (jwt && jwt.role === 'CLIENT') {
 				where.users = {
@@ -70,7 +70,7 @@ export class AccountService {
 
 	async patch(id: number, dto: PatchAccountDto, jwt?: JwtData) {
 		try {
-			const where: AccountWhereUniqueInput = {
+			const where: Prisma.AccountWhereUniqueInput = {
 				account_id: id,
 			};
 

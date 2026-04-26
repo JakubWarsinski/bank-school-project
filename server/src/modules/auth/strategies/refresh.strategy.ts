@@ -4,10 +4,9 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtData } from './access.strategy';
-
 import { AuthService } from '../auth.service';
 import { envConfig } from '../../../config/env.config';
-import { UserRole } from '../../../../prisma/generated/prisma/enums';
+import { UserRole } from '@prisma/client';
 
 @Injectable()
 export class RefreshStrategy extends PassportStrategy(Strategy, 'jwt-refresh') {

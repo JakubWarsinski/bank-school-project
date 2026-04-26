@@ -1,6 +1,6 @@
 ﻿import { Type } from 'class-transformer';
 import { IsString, IsNumber, IsDate, Length, Min, IsEnum } from 'class-validator';
-import { CardStatus } from '../../../../prisma/generated/prisma/enums';
+import { CardStatus } from '@prisma/client';
 
 export class CardDto {
 	@Min(0, { message: 'ID karty nie może być mniejsze niż 0.' })

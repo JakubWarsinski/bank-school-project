@@ -1,10 +1,10 @@
 import { Type } from 'class-transformer';
 import { TransactionDto } from './main.dto';
 import { IsInt, Min, IsOptional, IsDate, IsNumber } from 'class-validator';
-import { OmitType, PartialType, PickType } from '@nestjs/mapped-types';
+import { OmitType, PartialType } from '@nestjs/mapped-types';
 
 export class GetTransactionDto extends PartialType(
-	OmitType(TransactionDto, ['transaction_id', 'sender_id', 'receiver_id', 'title', 'description'] as const),
+	OmitType(TransactionDto, ['transaction_id', 'sender_id', 'receiver_id', 'description'] as const),
 ) {
 	@Min(1, { message: 'Kursor musi być większa niż 0.' })
 	@Type(() => Number)

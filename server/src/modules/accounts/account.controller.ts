@@ -18,7 +18,6 @@ export class AccountController {
 		return await this.accountService.findUnique({ account_id: id }, user);
 	}
 
-	@Roles('ADMIN', 'EMPLOYEE')
 	@Get()
 	async findMany(@Query() dto: GetAccountDto, @Jwt() user: JwtData) {
 		return await this.accountService.findMany(dto, user);

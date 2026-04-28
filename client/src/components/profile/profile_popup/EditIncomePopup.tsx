@@ -1,3 +1,4 @@
+import { userApi } from '@/api/user';
 import Popup from '@/components/popup/Popup';
 import { useState } from 'react';
 
@@ -5,14 +6,24 @@ export function EditIncomePopup({ open, onClose, user }) {
 	const [profession, setProfession] = useState(user?.profession || '');
 	const [income, setIncome] = useState(user?.monthly_net_income || '');
 	const [source, setSource] = useState(user?.main_income_sources || '');
+	const [loading, setLoading] = useState(false);
 
-	const handleSave = () => {
-		console.log('INCOME UPDATE:', {
-			profession,
-			income,
-			source,
-		});
-		onClose();
+	const handleSave = async () => {
+		if (!user?.user_id) return;
+
+		try {
+			setLoading(true);
+
+			await userApi.patch(user.user_id, {
+				profession,
+				monthly_net_income: income,
+				main_income_sources: source,
+			});
+
+			onClose();
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	return (
@@ -20,21 +31,18 @@ export function EditIncomePopup({ open, onClose, user }) {
 			<div className='space-y-3'>
 				<input
 					className='w-full p-3 border rounded-xl dark:bg-zinc-800'
-					value={profession}
 					onChange={(e) => setProfession(e.target.value)}
 					placeholder='Sytuacja zawodowa'
 				/>
 
 				<input
 					className='w-full p-3 border rounded-xl dark:bg-zinc-800'
-					value={income}
 					onChange={(e) => setIncome(e.target.value)}
 					placeholder='Dochód'
 				/>
 
 				<input
 					className='w-full p-3 border rounded-xl dark:bg-zinc-800'
-					value={source}
 					onChange={(e) => setSource(e.target.value)}
 					placeholder='Źródło dochodu'
 				/>
@@ -44,8 +52,12 @@ export function EditIncomePopup({ open, onClose, user }) {
 						Anuluj
 					</button>
 
-					<button onClick={handleSave} className='px-4 py-2 rounded-xl bg-blue-600 text-white'>
-						Zapisz
+					<button
+						onClick={handleSave}
+						disabled={loading}
+						className='px-4 py-2 rounded-xl bg-blue-600 text-white disabled:opacity-50'
+					>
+						{loading ? 'Zapisywanie...' : 'Zapisz'}
 					</button>
 				</div>
 			</div>

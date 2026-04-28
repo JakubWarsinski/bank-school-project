@@ -40,7 +40,7 @@ export class TransactionService {
 		try {
 			const { cursor, limit, ...filters } = dto;
 
-			const where: Prisma.TransactionWhereInput = buildWhere(filters, ['status', 'transaction_code']);
+			const where: Prisma.TransactionWhereInput = buildWhere(filters, ['status', 'type']);
 
 			if (jwt && jwt.role === 'CLIENT') {
 				where.OR = this.canAccess(jwt);

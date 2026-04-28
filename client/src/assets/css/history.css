@@ -1,0 +1,22 @@
+.history-main {
+	max-width: 1200px;
+	margin: auto;
+	padding-top: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.history-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+}
+
+.history-title {
+	font-size: 14pt;
+}
+
+.history-search-button {
+}

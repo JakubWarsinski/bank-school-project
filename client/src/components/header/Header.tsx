@@ -34,7 +34,7 @@ export const Header = () => {
 	};
 
 	const changePage = (name: string) => {
-		navigate(name);
+		navigate(`/${name}`);
 	};
 
 	const navLinks = {

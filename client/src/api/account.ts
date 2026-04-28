@@ -4,7 +4,7 @@ import { Account, GetAccountDto, GetAccountResponse, PatchAccountDto, PostAccoun
 
 const BASE_URL = '/accounts';
 
-export const cardApi = {
+export const accountApi = {
 	getUnique: async (id: number): Promise<Account> => {
 		try {
 			const { data } = await api.get(`${BASE_URL}/${id}`);

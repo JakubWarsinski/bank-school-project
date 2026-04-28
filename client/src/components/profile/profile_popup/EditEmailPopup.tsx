@@ -2,10 +2,8 @@ import { userApi } from '@/api/user';
 import Popup from '@/components/popup/Popup';
 import { useState } from 'react';
 
-export function EditAddressPopup({ open, onClose, user }) {
-	const [street, setStreet] = useState(user?.street || '');
-	const [city, setCity] = useState(user?.city || '');
-	const [postal, setPostal] = useState(user?.postal_code || '');
+export function EditEmailPopup({ open, onClose, user }) {
+	const [email, setEmail] = useState(user?.email_number || '');
 	const [loading, setLoading] = useState(false);
 
 	const handleSave = async () => {
@@ -15,9 +13,7 @@ export function EditAddressPopup({ open, onClose, user }) {
 			setLoading(true);
 
 			await userApi.patch(user.user_id, {
-				street,
-				city,
-				postal_code: postal,
+				email,
 			});
 
 			onClose();
@@ -27,24 +23,12 @@ export function EditAddressPopup({ open, onClose, user }) {
 	};
 
 	return (
-		<Popup isOpen={open} onClose={onClose} title='Edytuj adres' description='Zaktualizuj swoje dane adresowe'>
+		<Popup isOpen={open} onClose={onClose} title='Edytuj dane kontaktowe' description='Adres e-mail'>
 			<div className='space-y-3'>
 				<input
 					className='w-full p-3 border rounded-xl dark:bg-zinc-800'
-					onChange={(e) => setStreet(e.target.value)}
-					placeholder='Ulica'
-				/>
-
-				<input
-					className='w-full p-3 border rounded-xl dark:bg-zinc-800'
-					onChange={(e) => setCity(e.target.value)}
-					placeholder='Miasto'
-				/>
-
-				<input
-					className='w-full p-3 border rounded-xl dark:bg-zinc-800'
-					onChange={(e) => setPostal(e.target.value)}
-					placeholder='Kod pocztowy'
+					onChange={(e) => setEmail(e.target.value)}
+					placeholder='E-mail'
 				/>
 
 				<div className='flex justify-end gap-2'>

@@ -8,6 +8,8 @@ import { PublicRoute } from './components/routes/PublicRoute';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from './components/routes/ProtectedRoute';
 import History from './pages/history/History';
+import Finances from './pages/finances/Finances';
+import Transaction from './pages/transaction/Transaction';
 
 createRoot(document.getElementById('root')!).render(
 	<BrowserRouter>
@@ -20,6 +22,8 @@ createRoot(document.getElementById('root')!).render(
 				<Route path='/' element={<Dashboard />} />
 				<Route path='/profile' element={<ProfilePage />} />
 				<Route path='/history' element={<History />} />
+				<Route path='/finances' element={<Finances />} />
+				<Route path='/transfers' element={<Transaction />} />
 			</Route>
 		</Routes>
 	</BrowserRouter>,

@@ -7,11 +7,12 @@ import { EditAddressPopup } from '../profile_popup/EditAddressPopup';
 import { EditContactPopup } from '../profile_popup/EditContactPopup';
 import { EditIdCardPopup } from '../profile_popup/EditIdCardPopup';
 import { EditIncomePopup } from '../profile_popup/EditIncomePopup';
+import { EditEmailPopup } from '../profile_popup/EditEmailPopup';
 
 export const ProfileInfo = ({ user }: { user: User | null }) => {
 	const [revealed, setRevealed] = useState(false);
 
-	const [activePopup, setActivePopup] = useState<'address' | 'contact' | 'id' | 'income' | null>(null);
+	const [activePopup, setActivePopup] = useState<'address' | 'contact' | 'id' | 'income' | 'email' | null>(null);
 
 	const Row = ({ label, value }: { label: string; value: React.ReactNode }) => (
 		<div className='grid grid-cols-1 gap-1 sm:grid-cols-2 sm:gap-4 py-2 border-b border-zinc-100 dark:border-zinc-800 last:border-0'>
@@ -54,7 +55,7 @@ export const ProfileInfo = ({ user }: { user: User | null }) => {
 						},
 						{
 							title: 'Adres e-mail',
-							type: 'contact',
+							type: 'email',
 							value: !user ? <Loading /> : maskText(user.email, revealed),
 						},
 					].map((item, index) => (
@@ -151,6 +152,8 @@ export const ProfileInfo = ({ user }: { user: User | null }) => {
 			<EditAddressPopup open={activePopup === 'address'} onClose={() => setActivePopup(null)} user={user} />
 
 			<EditContactPopup open={activePopup === 'contact'} onClose={() => setActivePopup(null)} user={user} />
+
+			<EditEmailPopup open={activePopup === 'email'} onClose={() => setActivePopup(null)} user={user} />
 
 			<EditIdCardPopup open={activePopup === 'id'} onClose={() => setActivePopup(null)} user={user} />
 

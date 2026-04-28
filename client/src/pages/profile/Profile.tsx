@@ -75,57 +75,11 @@ export const ProfilePage = () => {
 			component: ProfileAgreements,
 		},
 	];
-
-	const getInitials = () => {
-		return `${user?.first_name.charAt(0)}${user?.last_name.charAt(0)}`.toUpperCase();
-	};
-
 	return (
 		<>
 			<Header />
 
 			<div className='max-w-6xl mx-auto px-4 py-6 space-y-6'>
-				{/* TOP PROFILE BANNER */}
-				{user && (
-					<div className='relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 p-6 shadow-lg'>
-						{/* dekoracyjne blur */}
-						<div className='absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10 blur-3xl' />
-						<div className='absolute -bottom-12 left-10 w-48 h-48 rounded-full bg-white/10 blur-3xl' />
-
-						<div className='relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between'>
-							<div className='flex items-center gap-4'>
-								{/* avatar */}
-								<div className='w-16 h-16 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-white text-xl font-bold shadow'>
-									{getInitials()}
-								</div>
-
-								<div className='text-white'>
-									<div className='text-sm text-white/70 mb-1'>Profil osobisty</div>
-
-									<h1 className='text-2xl font-semibold leading-tight'>
-										{user.first_name} {user.last_name}
-									</h1>
-
-									<p className='text-sm text-white/80 mt-1 break-all'>{user.email}</p>
-								</div>
-							</div>
-
-							{/* prawa strona */}
-							<div className='grid grid-cols-2 gap-3 sm:w-auto'>
-								<div className='rounded-2xl bg-white/10 px-4 py-3 backdrop-blur'>
-									<div className='text-xs text-white/70'>Status konta</div>
-									<div className='text-sm font-medium text-white'>Aktywne</div>
-								</div>
-
-								<div className='rounded-2xl bg-white/10 px-4 py-3 backdrop-blur'>
-									<div className='text-xs text-white/70'>Typ profilu</div>
-									<div className='text-sm font-medium text-white'>Osobisty</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				)}
-
 				{/* LISTA BLOKÓW */}
 				<div className='profile-list space-y-4'>
 					{sections.map((section) => {
